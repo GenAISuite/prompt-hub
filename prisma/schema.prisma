@@ -1,0 +1,28 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       String   @id @default(uuid()) // UUID for User ID
+  name     String
+  email    String   @unique
+  password String
+  prompts  Prompt[] // Relation to prompts
+}
+
+model Prompt {
+  id          String   @id @default(uuid()) // UUID for Prompt ID
+  name        String   @unique // Unique key for prompt name
+  prompt      String
+  updated_on  DateTime @updatedAt
+  updated_by  String   // FK to User UUID
+  edit_access Boolean
+  user        User     @relation(fields: [updated_by], references: [id]) // Set relation to User
+
+  @@index([updated_by]) // Optional index for performance
+}

@@ -1,0 +1,35 @@
+# Step 1: Build the Next.js app
+FROM node:18-alpine AS builder
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json (or yarn.lock)
+COPY package.json package-lock.json* ./
+
+# Install dependencies
+RUN npm install
+
+# Copy all files from the local file system to the container
+COPY . .
+
+
+# Step 2: Run the Next.js app in a lightweight container
+FROM node:18-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy only the built assets and node_modules from the previous step
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/package.json ./package.json
+
+# Expose port 3000 for the Next.js app
+EXPOSE 5123
+
+# Run Prisma migrations and then start the Next.js app
+CMD ["sh", "-c", "npm start"]
+

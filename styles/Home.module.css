@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.local-input {
+    margin: 20px 0;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.button {
+    margin: 20px 0;
+    padding: 10px 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textarea {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    max-width: 500px;
+}
