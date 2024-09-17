@@ -1,8 +1,9 @@
-# Prompt Hub
+# <img src="./public/prompthub.jpg" alt="Prompt Hub Logo" width="50" height="50"> Prompt Hub
 
 Welcome to **Prompt Hub**, an interactive platform designed to manage and create custom prompts. This application is built with user-friendly navigation, ensuring smooth interactions for signing in, signing up, and managing prompt creation.
 
-![Prompt Hub Logo](./public/prompthub.jpg)
+
+
 
 ## Setup Instructions
 
